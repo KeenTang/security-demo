@@ -12,4 +12,11 @@
     <artifactId>security-pc</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.k</groupId>
+            <artifactId>security-core</artifactId>
+            <version>${security.demo.version}</version>
+        </dependency>
+    </dependencies>
 </project>
