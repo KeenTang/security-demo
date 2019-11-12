@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 public class KtContextRegister implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        KtContext ktContext = new KtContext();
-        ktContext.setApplicationContext(applicationContext);
+        KtContextHolder.setKtContext(new KtContext(applicationContext));
     }
 }

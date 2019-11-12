@@ -7,6 +7,7 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSourceResolvable;
 import org.springframework.context.NoSuchMessageException;
+import org.springframework.core.ResolvableType;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 
@@ -27,8 +28,12 @@ public class KtContext implements ApplicationContext {
 
     private ApplicationContext delegate;
 
-    public void setApplicationContext(ApplicationContext applicationContext){
-        this.delegate=applicationContext;
+    public KtContext(ApplicationContext applicationContext) {
+        this.delegate = applicationContext;
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.delegate = applicationContext;
     }
 
     @Override
@@ -87,6 +92,11 @@ public class KtContext implements ApplicationContext {
     }
 
     @Override
+    public String[] getBeanNamesForType(ResolvableType resolvableType) {
+        return new String[0];
+    }
+
+    @Override
     public String[] getBeanNamesForType(Class<?> aClass) {
         return new String[0];
     }
@@ -137,6 +147,11 @@ public class KtContext implements ApplicationContext {
     }
 
     @Override
+    public <T> T getBean(Class<T> aClass, Object... objects) throws BeansException {
+        return null;
+    }
+
+    @Override
     public Object getBean(String s, Object... objects) throws BeansException {
         return null;
     }
@@ -153,6 +168,11 @@ public class KtContext implements ApplicationContext {
 
     @Override
     public boolean isPrototype(String s) throws NoSuchBeanDefinitionException {
+        return false;
+    }
+
+    @Override
+    public boolean isTypeMatch(String s, ResolvableType resolvableType) throws NoSuchBeanDefinitionException {
         return false;
     }
 
